@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <title>FIRMA</title>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lora" />
+    <link href="http://allfont.es/allfont.css?fonts=ubuntu-medium" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"; src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js";></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  </head>
+  <body>
+
+    <div id="wrapper">
+      <div class="row">
+        <div class="col-12 col-t-12 col-d-12 col-b-12">
+          <h1 style="text-align: center;" id="myRandomDiv"></h1>
+          <img src="base.png" width="468px" height="144px" />
+          <img src="logo.gif" class="logo" width="105px" height="67px" />
+          <p class="nombre" id="nombre"></p>
+          <p class="cargo" id="cargo"></p>
+          <p class="pais" id="pais"></p>
+          <p class="tituloEmail">e.</p><p class="mail" id="mail"></p>
+          <p class="tituloSkype">skype.</p><p class="skype" id="skype"></p>
+          <p class="tituloTelefono1">p.</p><p class="telefono1" id="telefono1"></p>
+          <p class="tituloTelefono2">m.</p><p class="telefono2" id="telefono2"></p>
+          <div id="buttonmiddle" class="col-12 col-t-12 col-d-12 col-b-12">
+          <button style="display: none;" type="button" id="myButton"></button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div id="selector">
+      <input type="text" id="entradaNombre" placeholder="Nombre y apellido"/><br>
+      <input type="text" id="entradaCargo" placeholder="Cargo" />
+      <input type="text" id="entradaPais" placeholder="País" />
+        <br><br>
+      <input type="text" id="entradaMail" placeholder="Mail" /><input class="entradaEmail" id="check" type="checkbox" value="1" checked onchange="valueChangedE()"/>
+      <input type="text" id="entradaSkype" placeholder="Skype" /><input class="entradaSkype" id="check" type="checkbox" value="1" checked onchange="valueChangedS()"/>
+      <input type="text" id="entradaTelefono1" placeholder="Teléfono 1 (izquierda)" /><input class="entradaTelefono1" id="check" type="checkbox" value="1" checked onchange="valueChangedT1()"/>
+      <input type="text" id="entradaTelefono2" placeholder="Teléfono 2 (derecha)" /><input class="entradaTelefono2" id="check" type="checkbox" value="1" checked onchange="valueChangedT2()"/>
+      <a style="margin-right: 25px;" class="btn btn-success" href="javascript:void(0);" onclick="generate();">DESCARGAR</a>
+    </div>
+
+    <style>
+      .logo {
+        position: absolute;
+        left: 9px;
+      }
+      #nombre {
+        font-family: 'Lora';
+        font-style: normal;
+        font-size: 11px;
+        /*font-weight: 700;*/
+        color: black;
+        text-transform: uppercase;
+        position: absolute;
+        left: 129px;
+        top: -5.25px;
+      }
+      #cargo {
+        font-family: 'Ubuntu';
+        font-style: italic;
+        font-size: 11px;
+        font-weight: 800;
+        color: black;
+        text-transform: capitalize;
+        position: absolute;
+        left: 129px;
+        top: 10.25px;
+      }
+      #pais {
+        font-family: 'Ubuntu Medium';
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        text-transform: capitalize;
+        position: absolute;
+        left: 129px;
+        top: 23.75px;
+      }
+      .tituloEmail {
+        font-family: 'Ubuntu';
+        font-style: bold;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 129px;
+        top: 41.75px;
+      }
+      #mail {
+        font-family: 'Ubuntu Medium';
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 139px;
+        top: 41.75px;
+      }
+      .tituloSkype {
+        font-family: 'Ubuntu';
+        font-style: bold;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 273px;
+        top: 41.75px;
+      } 
+      #skype {
+        font-family: 'Ubuntu Medium';
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 303px;
+        top: 41.75px;
+      }
+      .tituloTelefono1 {
+        font-family: 'Ubuntu';
+        font-style: bold;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 129px;
+        top: 53.75px;
+      }
+      #telefono1 {
+        font-family: 'Ubuntu Medium';
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 139px;
+        top: 53.75px;
+      }
+      .tituloTelefono2 {
+        font-family: 'Ubuntu';
+        font-style: bold;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 273px;
+        top: 53.75px;
+      }
+      #telefono2 {
+        font-family: 'Ubuntu Medium';
+        font-style: normal;
+        font-size: 10px;
+        font-weight: 700;
+        color: black;
+        position: absolute;
+        left: 286px;
+        top: 53.75px;
+      }
+      #selector {
+        position: absolute;
+        top: 7%;
+        left: 42%;
+        width: 14.2%;
+        background-color: red;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: -50px;
+        margin-left: -50px;
+      }
+    </style>
+    <script type="text/javascript">
+      function nombre() {
+        var a = document.getElementById("ententradaNombre").value;
+        document.getElementById("nombre").innerHTML = a;
+      }
+      $("#entradaNombre").keyup(function() {
+        $("#nombre").text($(this).val());
+      });
+      function cargo() {
+        var b = document.getElementById("ententradaCargo").value;
+        document.getElementById("cargo").innerHTML = b;
+      }
+      $("#entradaCargo").keyup(function() {
+        $("#cargo").text($(this).val());
+      });
+      function pais() {
+        var c = document.getElementById("ententradaPais").value;
+        document.getElementById("pais").innerHTML = c;
+      }
+      $("#entradaPais").keyup(function() {
+        $("#pais").text($(this).val());
+      });
+      function mail() {
+        var d = document.getElementById("ententradaMail").value;
+        document.getElementById("mail").innerHTML = d;
+      }
+      $("#entradaMail").keyup(function() {
+        $("#mail").text($(this).val());
+      });
+      function skype() {
+        var e = document.getElementById("ententradaSkype").value;
+        document.getElementById("skype").innerHTML = e;
+      }
+      $("#entradaSkype").keyup(function() {
+        $("#skype").text($(this).val());
+      });
+      function telefono1() {
+        var f = document.getElementById("ententradaTelefono1").value;
+        document.getElementById("telefono1").innerHTML = f;
+      }
+      $("#entradaTelefono1").keyup(function() {
+        $("#telefono1").text($(this).val());
+      });
+      function telefono2() {
+        var g = document.getElementById("ententradaTelefono2").value;
+        document.getElementById("telefono2").innerHTML = g;
+      }
+      $("#entradaTelefono2").keyup(function() {
+        $("#telefono2").text($(this).val());
+      });
+      function valueChangedE()
+      {
+        if($('.entradaEmail').is(":checked"))   
+          $(".tituloEmail").show();
+        else
+          $(".tituloEmail").hide();
+      }
+      function valueChangedS()
+      {
+        if($('.entradaSkype').is(":checked"))   
+          $(".tituloSkype").show();
+        else
+          $(".tituloSkype").hide();
+      }
+      function valueChangedT1()
+      {
+        if($('.entradaTelefono1').is(":checked"))   
+          $(".tituloTelefono1").show();
+        else
+          $(".tituloTelefono1").hide();
+      }
+      function valueChangedT2()
+      {
+        if($('.entradaTelefono2').is(":checked"))   
+          $(".tituloTelefono2").show();
+        else
+          $(".tituloTelefono2").hide();
+      }
+
+      
+
+    </script>
+  </body>
+</html>
